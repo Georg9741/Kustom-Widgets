@@ -1,0 +1,242 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "Photos",
+    "description": "Nothing-Inspired Image Widget With Touch Actions",
+    "author": "Georg9741",
+    "email": "georg9741@gmail.com",
+    "features": "",
+    "release": 375410013,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "globals_list": {
+      "frame": {
+        "index": 1,
+        "type": "SWITCH",
+        "title": "Frame",
+        "description": "Turn Frame On/Off",
+        "value": 1
+      },
+      "gray": {
+        "index": 2,
+        "type": "SWITCH",
+        "title": "Gray",
+        "description": "Turn Grayscale On/Off",
+        "value": 1
+      },
+      "corners": {
+        "index": 3,
+        "type": "NUMBER",
+        "title": "Corners",
+        "description": "Corner Radius",
+        "min": 0,
+        "max": 720,
+        "value": 48.0
+      },
+      "stroke": {
+        "index": 4,
+        "type": "NUMBER",
+        "title": "Stroke",
+        "description": "Frame Thickness",
+        "min": 0,
+        "max": 360,
+        "value": 52.0
+      },
+      "touch1": {
+        "index": 5,
+        "type": "TEXT",
+        "title": "Touch1",
+        "description": "Touch Action 1 - Items > Actions > Action1 > Touch > Single > Action: Open Link, Url: $gv(touch1)$ - Default: Launch App (Change App in Shortcuts)"
+      },
+      "touch2": {
+        "index": 6,
+        "type": "TEXT",
+        "title": "Touch2",
+        "description": "Touch Action 2 - Items > Actions > Action2 > Touch > Single > Action: Open Link, Url: $gv(touch2)$ - Default: Launch App (Change App in Shortcuts)"
+      },
+      "imgtrggr": {
+        "index": 7,
+        "type": "TEXT",
+        "title": "ImgTrggr",
+        "description": "Flows > PckImg > Trigger (on output change) - Default: $df(h)$ (Hourly)",
+        "value": "$df(h)$"
+      },
+      "img": {
+        "index": 8,
+        "type": "TEXT",
+        "title": "Img",
+        "description": "Change File Location: Flows > PickImg > File Picker",
+        "toggles": 1
+      },
+      "actions": {
+        "index": 9,
+        "type": "SWITCH",
+        "title": "Actions",
+        "description": "Show visual representation of Touch Actions",
+        "value": 0
+      }
+    },
+    "internal_flows": [
+      {
+        "id": "Fwmna9wn",
+        "name": "PckImg",
+        "t": [
+          {
+            "id": "TTVNEGBi",
+            "type": "T_FORMULA",
+            "params": {
+              "formula": "$gv(imgtrggr)$"
+            }
+          }
+        ],
+        "a": [
+          {
+            "id": "TAlIvPkm",
+            "type": "A_DOCUMENT",
+            "params": {
+              "folder": "content://com.android.externalstorage.documents/tree/primary%3AKustom%2Fimages"
+            }
+          },
+          {
+            "id": "TApPYygM",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "img"
+            }
+          }
+        ]
+      }
+    ],
+    "viewgroup_items": [
+      {
+        "internal_type": "ShapeModule",
+        "internal_title": "Frame",
+        "shape_type": "RECT",
+        "internal_toggles": {
+          "shape_width": 10,
+          "shape_height": 10,
+          "shape_corners": 10,
+          "paint_color": 10,
+          "paint_mode": 10
+        },
+        "internal_formulas": {
+          "shape_width": "$si(rwidth)$",
+          "shape_height": "$si(rheight)$",
+          "shape_corners": "$gv(corners) / si(skpi)$",
+          "paint_color": "$si(syscn1, 10)$",
+          "paint_mode": "$if(gv(frame) = 1, NORMAL, CLEAR)$"
+        }
+      },
+      {
+        "internal_type": "ShapeModule",
+        "internal_title": "Image",
+        "shape_type": "RECT",
+        "fx_gradient": "BITMAP",
+        "internal_toggles": {
+          "shape_width": 10,
+          "shape_height": 10,
+          "shape_corners": 10,
+          "fx_gradient_bitmap": 11,
+          "fx_bitmap_filter": 10
+        },
+        "internal_formulas": {
+          "shape_width": "$if(gv(frame) = 1, si(rwidth) - gv(stroke) / si(skpi), si(rwidth))$",
+          "shape_height": "$if(gv(frame) = 1, si(rheight) - gv(stroke) / si(skpi), si(rheight))$",
+          "shape_corners": "$if(gv(frame) = 1, if((gv(corners) - gv(stroke) / 2) / si(skpi) > 0, (gv(corners) - gv(stroke) / 2) / si(skpi), 0), gv(corners) / si(skpi))$",
+          "fx_gradient_bitmap": "$gv(img)$",
+          "fx_bitmap_filter": "$if(gv(gray) = 1, BW, NONE)$"
+        }
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Actions",
+        "internal_toggles": {
+          "config_alpha": 10
+        },
+        "internal_formulas": {
+          "config_alpha": "$if(gv(actions) = 1, 50, 0)$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Action1",
+            "shape_type": "RECT",
+            "paint_color": "#FFFF0000",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "position_padding_right": 10,
+              "position_padding_bottom": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$if(si(rwidth) <= si(rheight), si(rwidth), si(rwidth) / 2)$",
+              "shape_height": "$if(si(rwidth) <= si(rheight), si(rheight) / 2, si(rheight))$",
+              "position_padding_right": "$if(si(rwidth) <= si(rheight), 0, si(rwidth) / 2)$",
+              "position_padding_bottom": "$if(si(rwidth) <= si(rheight), si(rheight) / 2, 0)$"
+            },
+            "internal_events": [
+              {
+                "type": "SINGLE_TAP",
+                "action": "LAUNCH_APP"
+              }
+            ]
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Action2",
+            "shape_type": "RECT",
+            "paint_color": "#FF00FF00",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "position_padding_left": 10,
+              "position_padding_top": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$if(si(rwidth) <= si(rheight), si(rwidth), si(rwidth) / 2)$",
+              "shape_height": "$if(si(rwidth) <= si(rheight), si(rheight) / 2, si(rheight))$",
+              "position_padding_left": "$if(si(rwidth) <= si(rheight), 0, si(rwidth) / 2)$",
+              "position_padding_top": "$if(si(rwidth) <= si(rheight), si(rheight) / 2, 0)$"
+            },
+            "internal_events": [
+              {
+                "type": "SINGLE_TAP",
+                "action": "LAUNCH_APP"
+              }
+            ]
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Action3",
+            "paint_color": "#FF0000FF",
+            "position_anchor": "BOTTOMRIGHT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "position_padding_right": 10,
+              "position_padding_bottom": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$96/si(skpi)$",
+              "position_padding_right": "$36 / si(skpi)$",
+              "position_padding_bottom": "$36 / si(skpi)$"
+            },
+            "internal_events": [
+              {
+                "type": "SINGLE_TAP",
+                "action": "KUSTOM_ACTION"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
