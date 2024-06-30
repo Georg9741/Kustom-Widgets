@@ -1,0 +1,356 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "Spotify",
+    "description": "Spotify Widget Recreation With Better System Colors",
+    "author": "Georg9741",
+    "email": "georg9741@gmail.com",
+    "features": "MUSIC NOTIFICATIONS",
+    "release": 375410013,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "globals_list": {
+      "corners": {
+        "index": 1,
+        "type": "NUMBER",
+        "title": "Corners",
+        "min": 0,
+        "max": 720,
+        "value": 32.0
+      }
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Container",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Clip All",
+            "shape_type": "RECT",
+            "fx_mask": "CLIP_ALL",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "shape_corners": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$si(rheight)$",
+              "shape_corners": "$gv(corners)/si(skpi)$"
+            }
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Shape1",
+            "shape_type": "RECT",
+            "position_anchor": "TOP",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$si(rheight)-80/si(skpi)$",
+              "paint_color": "$si(syscn1, 20)$"
+            },
+            "internal_events": [
+              {
+                "type": "SINGLE_TAP",
+                "action": "LAUNCH_APP",
+                "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.spotify.music/.MainActivity;S.org.kustom.intent.label=Spotify;end"
+              }
+            ]
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Shape2",
+            "shape_type": "RECT",
+            "position_anchor": "BOTTOM",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$80/si(skpi)$",
+              "paint_color": "$si(syscn1, 10)$"
+            }
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Music Controls",
+        "config_stacking": "HORIZONTAL_TOP",
+        "position_anchor": "BOTTOM",
+        "internal_toggles": {
+          "config_visible": 10
+        },
+        "internal_formulas": {
+          "config_visible": "$if(si(rwidth)<512/si(skpi), REMOVE, ALWAYS)$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Previous",
+            "shape_type": "RECT",
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Touch",
+                "paint_color": "#00000000",
+                "internal_toggles": {
+                  "shape_width": 10,
+                  "shape_height": 10
+                },
+                "internal_formulas": {
+                  "shape_height": "$80/si(skpi)$",
+                  "shape_width": "$168/si(skpi)$"
+                },
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "MUSIC",
+                    "music_action": "PREVIOUS"
+                  }
+                ]
+              },
+              {
+                "internal_type": "FontIconModule",
+                "icon_set": "kfile://org.kustom.provider/icons/entypo.ttf",
+                "icon_icon": "controller-jump-to-start",
+                "internal_toggles": {
+                  "icon_size": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "icon_size": "$72/si(skpi)$",
+                  "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
+                }
+              }
+            ]
+          },
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Play/Pause",
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Touch",
+                "shape_type": "RECT",
+                "paint_color": "#00000000",
+                "internal_toggles": {
+                  "shape_width": 10,
+                  "shape_height": 10
+                },
+                "internal_formulas": {
+                  "shape_height": "$80/si(skpi)$",
+                  "shape_width": "$168/si(skpi)$"
+                },
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "MUSIC"
+                  }
+                ]
+              },
+              {
+                "internal_type": "FontIconModule",
+                "icon_set": "kfile://org.kustom.provider/icons/entypo.ttf",
+                "internal_toggles": {
+                  "icon_icon": 10,
+                  "icon_size": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "icon_icon": "$if(mi(state)=PLAYING, Controller-paus, Controller-play)$",
+                  "icon_size": "$72/si(skpi)$",
+                  "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 50))$"
+                }
+              }
+            ]
+          },
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Next",
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Touch",
+                "shape_type": "RECT",
+                "paint_color": "#00000000",
+                "internal_toggles": {
+                  "shape_width": 10,
+                  "shape_height": 10
+                },
+                "internal_formulas": {
+                  "shape_width": "$168/si(skpi)$",
+                  "shape_height": "$80/si(skpi)$"
+                },
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "MUSIC",
+                    "music_action": "NEXT"
+                  }
+                ]
+              },
+              {
+                "internal_type": "FontIconModule",
+                "icon_set": "kfile://org.kustom.provider/icons/entypo.ttf",
+                "icon_icon": "controller-next",
+                "internal_toggles": {
+                  "icon_size": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "icon_size": "$72/si(skpi)$",
+                  "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Music Info",
+        "config_stacking": "HORIZONTAL_BOTTOM",
+        "position_anchor": "TOPLEFT",
+        "internal_toggles": {
+          "config_visible": 10,
+          "config_margin": 10,
+          "position_offset_x": 10,
+          "position_offset_y": 10
+        },
+        "internal_formulas": {
+          "config_visible": "$if(si(rwidth)<512/si(skpi), REMOVE, ALWAYS)$",
+          "config_margin": "$20/si(skpi)$",
+          "position_offset_x": "$22/si(skpi)$",
+          "position_offset_y": "$22/si(skpi)$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Cover",
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Idle",
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$88/si(skpi)$",
+                      "paint_color": "$si(syscn1, 10)$"
+                    }
+                  },
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/entypo.ttf",
+                    "icon_icon": "beamed-note",
+                    "internal_toggles": {
+                      "icon_size": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "icon_size": "$48/si(skpi)$",
+                      "paint_color": "$si(sysca1, 90)$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "BitmapModule",
+                "internal_toggles": {
+                  "bitmap_bitmap": 10,
+                  "bitmap_width": 10,
+                  "bitmap_alpha": 10
+                },
+                "internal_formulas": {
+                  "bitmap_bitmap": "$mi(cover)$",
+                  "bitmap_width": "$88/si(skpi)$",
+                  "bitmap_alpha": "$if(mi(state)=PLAYING | mi(state)=PAUSED, 100)$"
+                }
+              }
+            ]
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Text",
+            "internal_toggles": {
+              "config_margin": 10
+            },
+            "internal_formulas": {
+              "config_margin": "$12/si(skpi)$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "internal_title": "Title",
+                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, tc(ell, mi(title), 25), \"Spotify\")$",
+                "text_family": "kfile://org.kustom.provider/fonts/NDot55Caps.otf",
+                "internal_toggles": {
+                  "text_size": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "text_size": "$36/si(skpi)$",
+                  "paint_color": "$si(sysca2, 90)$"
+                }
+              },
+              {
+                "internal_type": "TextModule",
+                "internal_title": "Artist",
+                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, tc(ell, mi(artist), 29))$",
+                "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                "internal_toggles": {
+                  "text_size": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "text_size": "$32/si(skpi)$",
+                  "paint_color": "$si(sysca2, 80)$"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "FontIconModule",
+        "internal_title": "Logo",
+        "icon_set": "kfile://org.kustom.provider/icons/Brands.ttf",
+        "icon_icon": "spotify",
+        "position_anchor": "TOPRIGHT",
+        "internal_toggles": {
+          "icon_size": 10,
+          "paint_color": 10,
+          "position_offset_x": 10,
+          "position_offset_y": 10
+        },
+        "internal_formulas": {
+          "icon_size": "$40/si(skpi)$",
+          "paint_color": "$si(sysca2, 90)$",
+          "position_offset_x": "$24/si(skpi)$",
+          "position_offset_y": "$24/si(skpi)$"
+        }
+      }
+    ]
+  }
+}
