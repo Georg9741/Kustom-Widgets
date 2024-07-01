@@ -23,7 +23,7 @@
         "type": "NUMBER",
         "title": "Corners",
         "min": 0,
-        "max": 720,
+        "max": 160,
         "value": 32.0
       }
     },
@@ -34,7 +34,7 @@
         "viewgroup_items": [
           {
             "internal_type": "ShapeModule",
-            "internal_title": "Clip All",
+            "internal_title": ".clip",
             "shape_type": "RECT",
             "fx_mask": "CLIP_ALL",
             "internal_toggles": {
@@ -52,6 +52,21 @@
             "internal_type": "ShapeModule",
             "internal_title": "Shape1",
             "shape_type": "RECT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$si(rheight)$",
+              "paint_color": "$si(syscn1, 10)$"
+            }
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Shape2",
+            "shape_type": "RECT",
             "position_anchor": "TOP",
             "internal_toggles": {
               "shape_width": 10,
@@ -60,7 +75,7 @@
             },
             "internal_formulas": {
               "shape_width": "$si(rwidth)$",
-              "shape_height": "$si(rheight)-80/si(skpi)$",
+              "shape_height": "$si(rheight)-77/si(skpi)$",
               "paint_color": "$si(syscn1, 20)$"
             },
             "internal_events": [
@@ -70,22 +85,6 @@
                 "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.spotify.music/.MainActivity;S.org.kustom.intent.label=Spotify;end"
               }
             ]
-          },
-          {
-            "internal_type": "ShapeModule",
-            "internal_title": "Shape2",
-            "shape_type": "RECT",
-            "position_anchor": "BOTTOM",
-            "internal_toggles": {
-              "shape_width": 10,
-              "shape_height": 10,
-              "paint_color": 10
-            },
-            "internal_formulas": {
-              "shape_width": "$si(rwidth)$",
-              "shape_height": "$80/si(skpi)$",
-              "paint_color": "$si(syscn1, 10)$"
-            }
           }
         ]
       },
@@ -98,25 +97,25 @@
           "config_visible": 10
         },
         "internal_formulas": {
-          "config_visible": "$if(si(rwidth)<512/si(skpi), REMOVE, ALWAYS)$"
+          "config_visible": "$if(si(rwidth)<288/si(skpi), REMOVE, ALWAYS)$"
         },
         "viewgroup_items": [
           {
             "internal_type": "OverlapLayerModule",
             "internal_title": "Previous",
-            "shape_type": "RECT",
             "viewgroup_items": [
               {
                 "internal_type": "ShapeModule",
                 "internal_title": "Touch",
+                "shape_type": "RECT",
                 "paint_color": "#00000000",
                 "internal_toggles": {
                   "shape_width": 10,
                   "shape_height": 10
                 },
                 "internal_formulas": {
-                  "shape_height": "$80/si(skpi)$",
-                  "shape_width": "$168/si(skpi)$"
+                  "shape_width": "$144/si(skpi)$",
+                  "shape_height": "$77/si(skpi)$"
                 },
                 "internal_events": [
                   {
@@ -135,7 +134,7 @@
                   "paint_color": 10
                 },
                 "internal_formulas": {
-                  "icon_size": "$72/si(skpi)$",
+                  "icon_size": "$64/si(skpi)$",
                   "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
                 }
               }
@@ -155,8 +154,8 @@
                   "shape_height": 10
                 },
                 "internal_formulas": {
-                  "shape_height": "$80/si(skpi)$",
-                  "shape_width": "$168/si(skpi)$"
+                  "shape_width": "$144/si(skpi)$",
+                  "shape_height": "$77/si(skpi)$"
                 },
                 "internal_events": [
                   {
@@ -175,7 +174,7 @@
                 },
                 "internal_formulas": {
                   "icon_icon": "$if(mi(state)=PLAYING, Controller-paus, Controller-play)$",
-                  "icon_size": "$72/si(skpi)$",
+                  "icon_size": "$64/si(skpi)$",
                   "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 50))$"
                 }
               }
@@ -195,8 +194,8 @@
                   "shape_height": 10
                 },
                 "internal_formulas": {
-                  "shape_width": "$168/si(skpi)$",
-                  "shape_height": "$80/si(skpi)$"
+                  "shape_width": "$144/si(skpi)$",
+                  "shape_height": "$77/si(skpi)$"
                 },
                 "internal_events": [
                   {
@@ -215,7 +214,7 @@
                   "paint_color": 10
                 },
                 "internal_formulas": {
-                  "icon_size": "$72/si(skpi)$",
+                  "icon_size": "$64/si(skpi)$",
                   "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
                 }
               }
@@ -226,7 +225,7 @@
       {
         "internal_type": "StackLayerModule",
         "internal_title": "Music Info",
-        "config_stacking": "HORIZONTAL_BOTTOM",
+        "config_stacking": "HORIZONTAL_TOP",
         "position_anchor": "TOPLEFT",
         "internal_toggles": {
           "config_visible": 10,
@@ -235,10 +234,10 @@
           "position_offset_y": 10
         },
         "internal_formulas": {
-          "config_visible": "$if(si(rwidth)<512/si(skpi), REMOVE, ALWAYS)$",
-          "config_margin": "$20/si(skpi)$",
-          "position_offset_x": "$22/si(skpi)$",
-          "position_offset_y": "$22/si(skpi)$"
+          "config_visible": "$if(si(rwidth)<288/si(skpi), REMOVE, ALWAYS)$",
+          "config_margin": "$18/si(skpi)$",
+          "position_offset_x": "$18/si(skpi)$",
+          "position_offset_y": "$18/si(skpi)$"
         },
         "viewgroup_items": [
           {
@@ -256,8 +255,8 @@
                       "paint_color": 10
                     },
                     "internal_formulas": {
-                      "shape_width": "$88/si(skpi)$",
-                      "paint_color": "$si(syscn1, 10)$"
+                      "shape_width": "$si(rheight)-113/si(skpi)$",
+                      "paint_color": "$si(sysca2, 10)$"
                     }
                   },
                   {
@@ -269,7 +268,7 @@
                       "paint_color": 10
                     },
                     "internal_formulas": {
-                      "icon_size": "$48/si(skpi)$",
+                      "icon_size": "$(si(rheight)-113/si(skpi))*0.6$",
                       "paint_color": "$si(sysca1, 90)$"
                     }
                   }
@@ -284,7 +283,7 @@
                 },
                 "internal_formulas": {
                   "bitmap_bitmap": "$mi(cover)$",
-                  "bitmap_width": "$88/si(skpi)$",
+                  "bitmap_width": "$si(rheight)-113/si(skpi)$",
                   "bitmap_alpha": "$if(mi(state)=PLAYING | mi(state)=PAUSED, 100)$"
                 }
               }
@@ -294,62 +293,67 @@
             "internal_type": "StackLayerModule",
             "internal_title": "Text",
             "internal_toggles": {
-              "config_margin": 10
+              "config_margin": 10,
+              "position_padding_top": 10
             },
             "internal_formulas": {
-              "config_margin": "$12/si(skpi)$"
+              "config_margin": "$12/si(skpi)$",
+              "position_padding_top": "$10/si(skpi)$"
             },
             "viewgroup_items": [
               {
                 "internal_type": "TextModule",
                 "internal_title": "Title",
-                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, tc(ell, mi(title), 25), \"Spotify\")$",
+                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, mi(title), \"Spotify\")$",
                 "text_family": "kfile://org.kustom.provider/fonts/NDot55Caps.otf",
+                "text_size_type": "FIXED_WIDTH",
+                "text_lines": 1.0,
                 "internal_toggles": {
+                  "text_width": 10,
                   "text_size": 10,
                   "paint_color": 10
                 },
                 "internal_formulas": {
-                  "text_size": "$36/si(skpi)$",
+                  "text_width": "$si(rwidth)-(si(rheight)-113/si(skpi)+109/si(skpi))$",
+                  "text_size": "$32/si(skpi)$",
                   "paint_color": "$si(sysca2, 90)$"
                 }
               },
               {
                 "internal_type": "TextModule",
                 "internal_title": "Artist",
-                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, tc(ell, mi(artist), 29))$",
+                "text_expression": "$if(mi(state)=PLAYING | mi(state)=PAUSED, mi(artist))$",
                 "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                "text_size_type": "FIXED_WIDTH",
+                "text_lines": 1.0,
                 "internal_toggles": {
+                  "text_width": 10,
                   "text_size": 10,
                   "paint_color": 10
                 },
                 "internal_formulas": {
-                  "text_size": "$32/si(skpi)$",
-                  "paint_color": "$si(sysca2, 80)$"
+                  "text_width": "$si(rwidth)-(si(rheight)-113/si(skpi)+109/si(skpi))$",
+                  "text_size": "$28/si(skpi)$",
+                  "paint_color": "$si(sysca2, 70)$"
                 }
               }
             ]
+          },
+          {
+            "internal_type": "FontIconModule",
+            "internal_title": "Spotify Logo",
+            "icon_set": "kfile://org.kustom.provider/icons/Brands.ttf",
+            "icon_icon": "spotify",
+            "internal_toggles": {
+              "icon_size": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "icon_size": "$37/si(skpi)$",
+              "paint_color": "$si(sysca2, 90)$"
+            }
           }
         ]
-      },
-      {
-        "internal_type": "FontIconModule",
-        "internal_title": "Logo",
-        "icon_set": "kfile://org.kustom.provider/icons/Brands.ttf",
-        "icon_icon": "spotify",
-        "position_anchor": "TOPRIGHT",
-        "internal_toggles": {
-          "icon_size": 10,
-          "paint_color": 10,
-          "position_offset_x": 10,
-          "position_offset_y": 10
-        },
-        "internal_formulas": {
-          "icon_size": "$40/si(skpi)$",
-          "paint_color": "$si(sysca2, 90)$",
-          "position_offset_x": "$24/si(skpi)$",
-          "position_offset_y": "$24/si(skpi)$"
-        }
       }
     ]
   }

@@ -38,7 +38,7 @@
         "title": "Corners",
         "description": "Corner Radius",
         "min": 0,
-        "max": 720,
+        "max": 320,
         "value": 46.0
       },
       "stroke": {
@@ -47,7 +47,7 @@
         "title": "Stroke",
         "description": "Frame Thickness",
         "min": 0,
-        "max": 360,
+        "max": 160,
         "value": 23.0
       },
       "touch1": {
@@ -60,7 +60,7 @@
         "index": 6,
         "type": "TEXT",
         "title": "Touch2",
-        "description": "Touch Action 2 - (Items>Actions>Action1>Touch>Single>Action: Open Link, Url: $gv(touch1)$) - Default: Launch App (Change App in Shortcuts)"
+        "description": "Touch Action 2 - (Items>Actions>Action1>Touch>Single>Action: Open Link, Url: $gv(touch2)$) - Default: Launch App (Change App in Shortcuts)"
       },
       "imgtrggr": {
         "index": 7,
@@ -224,9 +224,9 @@
               "position_padding_bottom": 10
             },
             "internal_formulas": {
-              "shape_width": "$80/si(skpi)$",
-              "position_padding_right": "$40/si(skpi)$",
-              "position_padding_bottom": "$40/si(skpi)$"
+              "shape_width": "$96/si(skpi)$",
+              "position_padding_right": "$48/si(skpi)$",
+              "position_padding_bottom": "$48/si(skpi)$"
             },
             "internal_events": [
               {
