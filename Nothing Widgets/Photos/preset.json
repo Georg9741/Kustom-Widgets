@@ -2,11 +2,11 @@
   "preset_info": {
     "version": 13,
     "title": "Photos",
-    "description": "Nothing-Inspired Image Widget With Touch Actions",
+    "description": "Image Widget With Touch Actions",
     "author": "Georg9741",
     "email": "georg9741@gmail.com",
     "features": "",
-    "release": 375410013,
+    "release": 376417910,
     "locked": false,
     "pflags": 0
   },
@@ -30,7 +30,7 @@
         "type": "SWITCH",
         "title": "Gray",
         "description": "Grayscale Switch",
-        "value": 1
+        "value": 0
       },
       "corners": {
         "index": 3,
@@ -39,7 +39,7 @@
         "description": "Corner Radius",
         "min": 0,
         "max": 320,
-        "value": 46.0
+        "value": 48.0
       },
       "stroke": {
         "index": 4,
@@ -48,19 +48,19 @@
         "description": "Frame Thickness",
         "min": 0,
         "max": 160,
-        "value": 23.0
+        "value": 24.0
       },
       "touch1": {
         "index": 5,
         "type": "TEXT",
         "title": "Touch1",
-        "description": "Touch Action 1 - (Items>Actions>Action1>Touch>Single>Action: Open Link, Url: $gv(touch1)$) - Default: Launch App (Change App in Shortcuts)"
+        "description": "Touch Action Link 1 - (Copy $gv(touch1)$ to Action1)"
       },
       "touch2": {
         "index": 6,
         "type": "TEXT",
         "title": "Touch2",
-        "description": "Touch Action 2 - (Items>Actions>Action1>Touch>Single>Action: Open Link, Url: $gv(touch2)$) - Default: Launch App (Change App in Shortcuts)"
+        "description": "Touch Action Link 2 - (Copy $gv(touch1)$ to Action2)"
       },
       "imgtrggr": {
         "index": 7,
