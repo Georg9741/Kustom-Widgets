@@ -184,7 +184,6 @@
             },
             "internal_events": [
               {
-                "type": "SINGLE_TAP",
                 "action": "LAUNCH_APP"
               }
             ]
@@ -208,7 +207,6 @@
             },
             "internal_events": [
               {
-                "type": "SINGLE_TAP",
                 "action": "LAUNCH_APP"
               }
             ]
@@ -230,7 +228,6 @@
             },
             "internal_events": [
               {
-                "type": "SINGLE_TAP",
                 "action": "KUSTOM_ACTION"
               }
             ]
