@@ -74,7 +74,8 @@
         "type": "TEXT",
         "title": "Img",
         "description": "Change File Location: Flows>PickImg>File Picker",
-        "toggles": 1
+        "toggles": 1,
+        "value": "https://raw.githubusercontent.com/Georg9741/Kustom-Widgets/main/resources/mikey_manjiro_sano.jpg"
       },
       "actions": {
         "index": 9,
