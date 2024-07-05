@@ -30,7 +30,7 @@
         "type": "SWITCH",
         "title": "Gray",
         "description": "Grayscale Switch",
-        "value": 0
+        "value": 1
       },
       "corners": {
         "index": 3,

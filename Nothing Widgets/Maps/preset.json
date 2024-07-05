@@ -1,0 +1,463 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "Maps",
+    "description": "Google Maps Widget With Dot Font",
+    "author": "Georg9741",
+    "email": "georg9741@gmail.com",
+    "features": "",
+    "release": 376417910,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "globals_list": {
+      "count": {
+        "index": 1,
+        "type": "NUMBER",
+        "title": "Count",
+        "description": "Amount of Shortcuts",
+        "min": 1,
+        "max": 4,
+        "value": 4.0
+      },
+      "corners": {
+        "index": 2,
+        "type": "NUMBER",
+        "title": "Corners",
+        "description": "Corner Radius",
+        "min": 0,
+        "max": 160,
+        "value": 64.0
+      },
+      "size": {
+        "index": 3,
+        "type": "NUMBER",
+        "title": "Size",
+        "description": "Widget Size",
+        "min": 0,
+        "max": 720,
+        "value": 191.0
+      }
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Search Bar",
+        "position_anchor": "TOP",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "shape_corners": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$gv(size)/si(skpi)$",
+              "shape_corners": "$gv(corners)/si(skpi)$",
+              "paint_color": "$si(syscn1, 10)$"
+            }
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Bar",
+            "shape_type": "RECT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "shape_corners": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)-gv(size)/si(skpi)*0.4$",
+              "shape_height": "$gv(size)/si(skpi)*0.6$",
+              "shape_corners": "$gv(size)/si(skpi)*0.3$",
+              "paint_color": "$si(syscn1, 20)$"
+            },
+            "internal_events": [
+              {
+                "action": "LAUNCH_APP",
+                "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.google.android.apps.maps/com.google.android.maps.MapsActivity;S.org.kustom.intent.label=Maps;end"
+              }
+            ]
+          },
+          {
+            "internal_type": "FontIconModule",
+            "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+            "icon_icon": "map-marker",
+            "position_anchor": "CENTERLEFT",
+            "internal_toggles": {
+              "icon_size": 10,
+              "paint_color": 10,
+              "position_padding_left": 10
+            },
+            "internal_formulas": {
+              "icon_size": "$gv(size)/si(skpi)*0.3$",
+              "paint_color": "$si(sysca2, 90)$",
+              "position_padding_left": "$gv(size)/si(skpi)*0.35$"
+            }
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Text",
+            "position_anchor": "CENTERLEFT",
+            "internal_toggles": {
+              "position_padding_left": 10
+            },
+            "internal_formulas": {
+              "position_padding_left": "$gv(size)/si(skpi)*0.75$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "text_expression": "$if(si(rwidth)>gv(size)/si(skpi)*2.75, Search Google Maps, if(si(rwidth)>gv(size)/si(skpi)*1.75, Google Maps))$",
+                "text_family": "kfile://org.kustom.provider/fonts/NDot55Caps.otf",
+                "text_size_type": "FIXED_WIDTH",
+                "text_lines": 1.0,
+                "internal_toggles": {
+                  "text_width": 10,
+                  "text_size": 10,
+                  "paint_color": 10,
+                  "position_padding_top": 10
+                },
+                "internal_formulas": {
+                  "text_width": "$si(rwidth)-gv(size)/si(skpi)$",
+                  "text_size": "$gv(size)/si(skpi)*0.175$",
+                  "paint_color": "$si(sysca2, 90)$",
+                  "position_padding_top": "$gv(size)/si(skpi)*0.05$"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Buttons",
+        "internal_toggles": {
+          "config_visible": 10,
+          "position_offset_y": 10
+        },
+        "internal_formulas": {
+          "config_visible": "$if(si(rheight)>gv(size)/si(skpi)*1.75, ALWAYS, REMOVE)$",
+          "position_offset_y": "$gv(size)/si(skpi)/2$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "shape_corners": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$si(rheight)-gv(size)/si(skpi)$",
+              "shape_corners": "$64/si(skpi)$",
+              "paint_color": "$si(syscn1, 20)$"
+            }
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Shortcuts",
+            "config_stacking": "HORIZONTAL_CENTER",
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Home",
+                "internal_toggles": {
+                  "config_visible": 10,
+                  "position_padding_right": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(count)>si(mindex), ALWAYS, REMOVE)$",
+                  "position_padding_right": "$if(gv(count)>si(mindex)+1, 12/si(skpi))$"
+                },
+                "internal_events": [
+                  {
+                    "action": "LAUNCH_SHORTCUT"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "shape_height": "$si(rheight)-gv(size)/si(skpi)*1.4$",
+                      "shape_corners": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 10)$"
+                    }
+                  },
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                    "icon_icon": "home-variant-outline",
+                    "internal_toggles": {
+                      "icon_size": 10,
+                      "paint_color": 10,
+                      "position_padding_bottom": 10
+                    },
+                    "internal_formulas": {
+                      "icon_size": "$gv(size)/si(skpi)*0.3$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "Home",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_size_type": "FIXED_WIDTH",
+                    "text_lines": 1.0,
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_width": 10,
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "text_size": "$gv(size)/si(skpi)*0.15$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_top": "$gv(size)/si(skpi)*0.45$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Work",
+                "internal_toggles": {
+                  "config_visible": 10,
+                  "position_padding_right": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(count)>si(mindex), ALWAYS, REMOVE)$",
+                  "position_padding_right": "$if(gv(count)>si(mindex)+1, 12/si(skpi))$"
+                },
+                "internal_events": [
+                  {
+                    "action": "LAUNCH_SHORTCUT"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "shape_height": "$si(rheight)-gv(size)/si(skpi)*1.4$",
+                      "shape_corners": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 10)$"
+                    }
+                  },
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                    "icon_icon": "briefcase-outline",
+                    "internal_toggles": {
+                      "icon_size": 10,
+                      "paint_color": 10,
+                      "position_padding_bottom": 10
+                    },
+                    "internal_formulas": {
+                      "icon_size": "$gv(size)/si(skpi)*0.3$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "Work",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_size_type": "FIXED_WIDTH",
+                    "text_lines": 1.0,
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_width": 10,
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "text_size": "$gv(size)/si(skpi)*0.15$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_top": "$gv(size)/si(skpi)*0.45$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "School",
+                "internal_toggles": {
+                  "config_visible": 10,
+                  "position_padding_right": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(count)>si(mindex), ALWAYS, REMOVE)$",
+                  "position_padding_right": "$if(gv(count)>si(mindex)+1, 12/si(skpi))$"
+                },
+                "internal_events": [
+                  {
+                    "action": "LAUNCH_SHORTCUT"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "shape_height": "$si(rheight)-gv(size)/si(skpi)*1.4$",
+                      "shape_corners": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 10)$"
+                    }
+                  },
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                    "icon_icon": "school-outline",
+                    "internal_toggles": {
+                      "icon_size": 10,
+                      "paint_color": 10,
+                      "position_padding_bottom": 10
+                    },
+                    "internal_formulas": {
+                      "icon_size": "$gv(size)/si(skpi)*0.3$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "School",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_size_type": "FIXED_WIDTH",
+                    "text_lines": 1.0,
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_width": 10,
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "text_size": "$gv(size)/si(skpi)*0.15$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_top": "$gv(size)/si(skpi)*0.45$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Mom",
+                "internal_toggles": {
+                  "config_visible": 10,
+                  "position_padding_right": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(count)>si(mindex), ALWAYS, REMOVE)$",
+                  "position_padding_right": "$if(gv(count)>si(mindex)+1, 12/si(skpi))$"
+                },
+                "internal_events": [
+                  {
+                    "action": "LAUNCH_SHORTCUT"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "shape_height": "$si(rheight)-gv(size)/si(skpi)*1.4$",
+                      "shape_corners": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 10)$"
+                    }
+                  },
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                    "icon_icon": "home-outline",
+                    "internal_toggles": {
+                      "icon_size": 10,
+                      "paint_color": 10,
+                      "position_padding_bottom": 10
+                    },
+                    "internal_formulas": {
+                      "icon_size": "$gv(size)/si(skpi)*0.3$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "Mom",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_size_type": "FIXED_WIDTH",
+                    "text_lines": 1.0,
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_width": 10,
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
+                      "text_size": "$gv(size)/si(skpi)*0.15$",
+                      "paint_color": "$si(sysca2, 90)$",
+                      "position_padding_top": "$gv(size)/si(skpi)*0.45$"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
