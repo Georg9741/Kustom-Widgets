@@ -1,0 +1,656 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "Calendar",
+    "description": "Nothing-Inspired Calendar Widget",
+    "author": "Georg9741",
+    "email": "georg9741@gmail.com",
+    "features": "CALENDAR",
+    "release": 376417910,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "globals_list": {
+      "corners": {
+        "index": 1,
+        "type": "NUMBER",
+        "title": "Corners",
+        "description": "Corner Radius",
+        "min": 0,
+        "max": 160,
+        "value": 48.0
+      }
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Header",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10,
+              "shape_corners": 10,
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)$",
+              "shape_height": "$si(rheight)$",
+              "shape_corners": "$gv(corners)/si(skpi)$",
+              "paint_color": "$si(syscn1, 10)$"
+            }
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_title": "Touch Area",
+            "shape_type": "RECT",
+            "paint_color": "#00000000",
+            "position_anchor": "TOPLEFT",
+            "internal_toggles": {
+              "shape_width": 10,
+              "shape_height": 10
+            },
+            "internal_formulas": {
+              "shape_width": "$si(rwidth)-128/si(skpi)$",
+              "shape_height": "$128/si(skpi)$"
+            },
+            "internal_events": [
+              {
+                "action": "LAUNCH_APP",
+                "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.google.android.calendar/com.android.calendar.AllInOneActivity;S.org.kustom.intent.label=Calendar;end"
+              }
+            ]
+          },
+          {
+            "internal_type": "TextModule",
+            "internal_title": "Month",
+            "text_expression": "$df(MMMM)$",
+            "text_family": "kfile://org.kustom.provider/fonts/NDot55Caps.otf",
+            "position_anchor": "TOPLEFT",
+            "internal_toggles": {
+              "text_size": 10,
+              "paint_color": 10,
+              "position_padding_left": 10,
+              "position_padding_top": 10
+            },
+            "internal_formulas": {
+              "text_size": "$48/si(skpi)$",
+              "paint_color": "$si(syscn1, 95)$",
+              "position_padding_left": "$24/si(skpi)$",
+              "position_padding_top": "$44/si(skpi)$"
+            }
+          },
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Add Event",
+            "position_anchor": "TOPRIGHT",
+            "internal_toggles": {
+              "position_padding_right": 10,
+              "position_padding_top": 10
+            },
+            "internal_formulas": {
+              "position_padding_right": "$24/si(skpi)$",
+              "position_padding_top": "$24/si(skpi)$"
+            },
+            "internal_events": [
+              {
+                "action": "OPEN_LINK",
+                "url": "https://www.google.com/calendar/render?action=TEMPLATE&%2Fundefined"
+              }
+            ],
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "shape_type": "CIRCLE",
+                "internal_toggles": {
+                  "shape_width": 10,
+                  "paint_color": 10
+                },
+                "internal_formulas": {
+                  "shape_width": "$80/si(skpi)$",
+                  "paint_color": "$si(syscn1, 95)$"
+                }
+              },
+              {
+                "internal_type": "TextModule",
+                "text_expression": "+",
+                "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                "internal_toggles": {
+                  "text_size": 10,
+                  "paint_color": 10,
+                  "position_padding_left": 10,
+                  "position_padding_top": 10
+                },
+                "internal_formulas": {
+                  "text_size": "$72/si(skpi)$",
+                  "paint_color": "$si(syscn1, 10)$",
+                  "position_padding_left": "$2/si(skpi)$",
+                  "position_padding_top": "$8/si(skpi)$"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Calendar Info",
+        "position_anchor": "TOPLEFT",
+        "internal_toggles": {
+          "config_margin": 10,
+          "position_offset_x": 10,
+          "position_offset_y": 10
+        },
+        "internal_formulas": {
+          "config_margin": "$(si(rheight)-(80+80+80+128+24)/si(skpi))/2$",
+          "position_offset_x": "$24/si(skpi)$",
+          "position_offset_y": "$128/si(skpi)$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Event 1",
+            "config_stacking": "HORIZONTAL_TOP",
+            "internal_toggles": {
+              "config_visible": 10,
+              "config_margin": 10
+            },
+            "internal_formulas": {
+              "config_visible": "$if(df(MMMM, ci(start, si(mindex)))=df(MMMM), ALWAYS, REMOVE)$",
+              "config_margin": "$12/si(skpi)$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Date",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(urld, si(mindex, 1))$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(df(D, ci(start, si(mindex, 1)))=df(D, ci(start, si(mindex, 1)-1)), NEVER, ALWAYS)$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "CIRCLE",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$80/si(skpi)$",
+                      "paint_color": "$if(df(D, ci(start, si(mindex, 2)))=df(D), #FFD71921, si(syscn1, 20))$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$df(E\nd, ci(start, si(mindex, 2)))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 95)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Event",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(url, si(mindex, 1))$"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-140/si(skpi)$",
+                      "shape_height": "$80/si(skpi)$",
+                      "shape_corners": "$24/si(skpi)$",
+                      "paint_color": "$if(ci(allday, si(mindex, 2))=0, si(syscn1, 20), si(syscn1, 30))$"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": ".Clip Text",
+                    "shape_type": "RECT",
+                    "fx_mask": "CLIP_ALL",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-152/si(skpi)$",
+                      "shape_height": "$64/si(skpi)$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "position_padding_left": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "position_padding_left": "$12/si(skpi)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Event 2",
+            "config_stacking": "HORIZONTAL_TOP",
+            "internal_toggles": {
+              "config_visible": 10,
+              "config_margin": 10
+            },
+            "internal_formulas": {
+              "config_visible": "$if(df(MMMM, ci(start, si(mindex)))=df(MMMM), ALWAYS, REMOVE)$",
+              "config_margin": "$12/si(skpi)$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Date",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(urld, si(mindex, 1))$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(df(D, ci(start, si(mindex, 1)))=df(D, ci(start, si(mindex, 1)-1)), NEVER, ALWAYS)$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "CIRCLE",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$80/si(skpi)$",
+                      "paint_color": "$if(df(D, ci(start, si(mindex, 2)))=df(D), #FFD71921, si(syscn1, 20))$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$df(E\nd, ci(start, si(mindex, 2)))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 95)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Event",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(url, si(mindex, 1))$"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-140/si(skpi)$",
+                      "shape_height": "$80/si(skpi)$",
+                      "shape_corners": "$24/si(skpi)$",
+                      "paint_color": "$if(ci(allday, si(mindex, 2))=0, si(syscn1, 20), si(syscn1, 30))$"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": ".Clip Text",
+                    "shape_type": "RECT",
+                    "fx_mask": "CLIP_ALL",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-152/si(skpi)$",
+                      "shape_height": "$64/si(skpi)$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "position_padding_left": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "position_padding_left": "$12/si(skpi)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Event 3",
+            "config_stacking": "HORIZONTAL_TOP",
+            "internal_toggles": {
+              "config_visible": 10,
+              "config_margin": 10
+            },
+            "internal_formulas": {
+              "config_visible": "$if(df(MMMM, ci(start, si(mindex)))=df(MMMM), ALWAYS, REMOVE)$",
+              "config_margin": "$12/si(skpi)$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Date",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(urld, si(mindex, 1))$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(df(D, ci(start, si(mindex, 1)))=df(D, ci(start, si(mindex, 1)-1)), NEVER, ALWAYS)$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "CIRCLE",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$80/si(skpi)$",
+                      "paint_color": "$if(df(D, ci(start, si(mindex, 2)))=df(D), #FFD71921, si(syscn1, 20))$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$df(E\nd, ci(start, si(mindex, 2)))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 95)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Event",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$ci(url, si(mindex, 1))$"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-140/si(skpi)$",
+                      "shape_height": "$80/si(skpi)$",
+                      "shape_corners": "$24/si(skpi)$",
+                      "paint_color": "$if(ci(allday, si(mindex, 2))=0, si(syscn1, 20), si(syscn1, 30))$"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": ".Clip Text",
+                    "shape_type": "RECT",
+                    "fx_mask": "CLIP_ALL",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-152/si(skpi)$",
+                      "shape_height": "$64/si(skpi)$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "position_anchor": "CENTERLEFT",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "position_padding_left": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "position_padding_left": "$12/si(skpi)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "No Event",
+            "config_stacking": "HORIZONTAL_TOP",
+            "internal_toggles": {
+              "config_visible": 10,
+              "config_margin": 10
+            },
+            "internal_formulas": {
+              "config_visible": "$if(df(MMMM, ci(start, 0))=df(MMMM), REMOVE, ALWAYS)$",
+              "config_margin": "$12/si(skpi)$"
+            },
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Date",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "$\"intent://com.android.calendar/time/\"+df(S)+\"000#Intent;scheme=content;end\"$"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "CIRCLE",
+                    "paint_color": "#FFD71921",
+                    "internal_toggles": {
+                      "shape_width": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$80/si(skpi)$"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "$df(E\nd)$",
+                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "text_align": "CENTER",
+                    "internal_toggles": {
+                      "text_size": 10,
+                      "paint_color": 10,
+                      "position_padding_top": 10
+                    },
+                    "internal_formulas": {
+                      "text_size": "$32/si(skpi)$",
+                      "paint_color": "$si(syscn1, 95)$",
+                      "position_padding_top": "$6/si(skpi)$"
+                    }
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Add Event",
+                "internal_events": [
+                  {
+                    "action": "OPEN_LINK",
+                    "url": "https://www.google.com/calendar/render?action=TEMPLATE&%2Fundefined"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "internal_toggles": {
+                      "shape_width": 10,
+                      "shape_height": 10,
+                      "shape_corners": 10,
+                      "paint_color": 10
+                    },
+                    "internal_formulas": {
+                      "shape_width": "$si(rwidth)-140/si(skpi)$",
+                      "shape_height": "$si(rheight)-152/si(skpi)$",
+                      "shape_corners": "$24/si(skpi)$",
+                      "paint_color": "$si(syscn1, 20)$"
+                    }
+                  },
+                  {
+                    "internal_type": "StackLayerModule",
+                    "internal_title": "Text",
+                    "internal_toggles": {
+                      "config_margin": 10
+                    },
+                    "internal_formulas": {
+                      "config_margin": "$16/si(skpi)$"
+                    },
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "Nothing planned",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "text_size_type": "FIXED_WIDTH",
+                        "text_lines": 2.0,
+                        "text_align": "CENTER",
+                        "internal_toggles": {
+                          "text_width": 10,
+                          "text_size": 10,
+                          "paint_color": 10
+                        },
+                        "internal_formulas": {
+                          "text_width": "$si(rwidth)-140/si(skpi)$",
+                          "text_size": "$40/si(skpi)$",
+                          "paint_color": "$si(syscn1, 95)$"
+                        }
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "Tap here to add Events to your schedule",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "text_size_type": "FIXED_WIDTH",
+                        "text_align": "CENTER",
+                        "text_lines": 2.0,
+                        "internal_toggles": {
+                          "text_width": 10,
+                          "text_size": 10,
+                          "paint_color": 10
+                        },
+                        "internal_formulas": {
+                          "text_width": "$si(rwidth)-140/si(skpi)$",
+                          "text_size": "$32/si(skpi)$",
+                          "paint_color": "$si(syscn1, 70)$"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

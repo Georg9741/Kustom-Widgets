@@ -103,7 +103,7 @@
             },
             "internal_formulas": {
               "icon_size": "$gv(size)/si(skpi)*0.3$",
-              "paint_color": "$si(sysca2, 90)$",
+              "paint_color": "$si(syscn1, 95)$",
               "position_padding_left": "$gv(size)/si(skpi)*0.35$"
             }
           },
@@ -133,7 +133,7 @@
                 "internal_formulas": {
                   "text_width": "$si(rwidth)-gv(size)/si(skpi)$",
                   "text_size": "$gv(size)/si(skpi)*0.175$",
-                  "paint_color": "$si(sysca2, 90)$",
+                  "paint_color": "$si(syscn1, 95)$",
                   "position_padding_top": "$gv(size)/si(skpi)*0.05$"
                 }
               }
@@ -217,8 +217,8 @@
                       "position_padding_bottom": 10
                     },
                     "internal_formulas": {
-                      "icon_size": "$gv(size)/si(skpi)*0.3$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "icon_size": "$if((si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count)>gv(size)/si(skpi)*0.3, gv(size)/si(skpi)*0.3, (si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count))$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
                     }
                   },
@@ -238,7 +238,7 @@
                     "internal_formulas": {
                       "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
                       "text_size": "$gv(size)/si(skpi)*0.15$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_top": "$gv(size)/si(skpi)*0.45$"
                     }
                   }
@@ -287,8 +287,8 @@
                       "position_padding_bottom": 10
                     },
                     "internal_formulas": {
-                      "icon_size": "$gv(size)/si(skpi)*0.3$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "icon_size": "$if((si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count)>gv(size)/si(skpi)*0.3, gv(size)/si(skpi)*0.3, (si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count))$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
                     }
                   },
@@ -308,7 +308,7 @@
                     "internal_formulas": {
                       "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
                       "text_size": "$gv(size)/si(skpi)*0.15$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_top": "$gv(size)/si(skpi)*0.45$"
                     }
                   }
@@ -357,8 +357,8 @@
                       "position_padding_bottom": 10
                     },
                     "internal_formulas": {
-                      "icon_size": "$gv(size)/si(skpi)*0.3$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "icon_size": "$if((si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count)>gv(size)/si(skpi)*0.3, gv(size)/si(skpi)*0.3, (si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count))$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
                     }
                   },
@@ -378,7 +378,7 @@
                     "internal_formulas": {
                       "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
                       "text_size": "$gv(size)/si(skpi)*0.15$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_top": "$gv(size)/si(skpi)*0.45$"
                     }
                   }
@@ -427,8 +427,8 @@
                       "position_padding_bottom": 10
                     },
                     "internal_formulas": {
-                      "icon_size": "$gv(size)/si(skpi)*0.3$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "icon_size": "$if((si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count)>gv(size)/si(skpi)*0.3, gv(size)/si(skpi)*0.3, (si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-12/si(skpi)*(gv(count)-1)/gv(count))$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_bottom": "$gv(size)/si(skpi)*0.3$"
                     }
                   },
@@ -448,7 +448,7 @@
                     "internal_formulas": {
                       "text_width": "$(si(rwidth)-gv(size)/si(skpi)*0.4)/gv(count)-\n12/si(skpi)*(gv(count)-1)/gv(count)$",
                       "text_size": "$gv(size)/si(skpi)*0.15$",
-                      "paint_color": "$si(sysca2, 90)$",
+                      "paint_color": "$si(syscn1, 95)$",
                       "position_padding_top": "$gv(size)/si(skpi)*0.45$"
                     }
                   }

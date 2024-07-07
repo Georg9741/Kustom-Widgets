@@ -117,7 +117,7 @@
                     "internal_formulas": {
                       "shape_width": "$if(si(rwidth)>si(rheight)*0.6, si(rheight)*0.6-36/si(skpi), si(rwidth)-36/si(skpi))$",
                       "shape_height": "$si(rheight)*0.6-36/si(skpi)$",
-                      "paint_color": "$si(sysca2, 10)$"
+                      "paint_color": "$si(syscn1, 10)$"
                     }
                   },
                   {
@@ -130,7 +130,7 @@
                     },
                     "internal_formulas": {
                       "icon_size": "$if(si(rwidth)>si(rheight)*0.6, si(rheight)*0.6-36/si(skpi), si(rwidth)-36/si(skpi))*0.6$",
-                      "paint_color": "$si(sysca1, 90)$"
+                      "paint_color": "$si(syscn1, 95)$"
                     }
                   }
                 ]
@@ -185,7 +185,7 @@
                 "internal_formulas": {
                   "text_width": "$si(rwidth)-(si(rheight)*0.6+64/si(skpi))$",
                   "text_size": "$gv(text)/si(skpi)$",
-                  "paint_color": "$si(sysca2, 90)$"
+                  "paint_color": "$si(syscn1, 95)$"
                 }
               },
               {
@@ -203,7 +203,7 @@
                 "internal_formulas": {
                   "text_width": "$si(rwidth)-(si(rheight)*0.6+64/si(skpi))$",
                   "text_size": "$if(gv(text)>8, (gv(text)-8)/si(skpi))$",
-                  "paint_color": "$si(sysca2, 70)$"
+                  "paint_color": "$si(syscn1, 70)$"
                 }
               }
             ]
@@ -221,7 +221,7 @@
             },
             "internal_formulas": {
               "icon_size": "$37/si(skpi)$",
-              "paint_color": "$si(sysca2, 90)$",
+              "paint_color": "$si(syscn1, 95)$",
               "position_padding_right": "$18/si(skpi)$",
               "position_padding_top": "$18/si(skpi)$"
             }
@@ -317,7 +317,7 @@
                     },
                     "internal_formulas": {
                       "icon_size": "$64/si(skpi)$",
-                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
+                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(syscn1, 95), si(syscn1, 30))$"
                     }
                   }
                 ]
@@ -356,7 +356,7 @@
                     "internal_formulas": {
                       "icon_icon": "$if(mi(state)=PLAYING, Controller-paus, Controller-play)$",
                       "icon_size": "$64/si(skpi)$",
-                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 50))$"
+                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(syscn1, 95), si(syscn1, 50))$"
                     }
                   }
                 ]
@@ -401,7 +401,7 @@
                     },
                     "internal_formulas": {
                       "icon_size": "$64/si(skpi)$",
-                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(sysca2, 90), si(sysca2, 30))$"
+                      "paint_color": "$if(mi(state)=PLAYING | mi(state)=PAUSED, si(syscn1, 95), si(syscn1, 30))$"
                     }
                   }
                 ]
