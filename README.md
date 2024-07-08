@@ -16,7 +16,7 @@ Image Widget With Touch Actions
 -- **Stroke** _Frame Thickness_  
 -- **Touch1** _Touch Action Link 1 - (Copy $gv(touch1)$ to Action1)_  
 -- **Touch2** _Touch Action Link 1 - (Copy $gv(touch2)$ to Action2)_  
--- **ImgTrggr** _Default: $df(h)$ (Hourly) - (Flows>PckImg>Trigger (on output change))_  
+-- **ImgTrggr** _Default: $df(h)$ (Hourly)_  
 -- **Img** _Change File Location: Flows>PickImg>File Picker_  
 -- **Actions** _Show Touch Areas_  
 

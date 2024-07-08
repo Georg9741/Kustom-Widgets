@@ -258,20 +258,45 @@
                     }
                   },
                   {
-                    "internal_type": "TextModule",
-                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
-                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "internal_type": "StackLayerModule",
+                    "internal_title": "Text",
                     "position_anchor": "CENTERLEFT",
                     "internal_toggles": {
-                      "text_size": 10,
                       "position_padding_left": 10,
                       "position_padding_top": 10
                     },
                     "internal_formulas": {
-                      "text_size": "$32/si(skpi)$",
                       "position_padding_left": "$12/si(skpi)$",
                       "position_padding_top": "$6/si(skpi)$"
-                    }
+                    },
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$ci(title, si(mindex, 3))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "text_size_type": "FIXED_WIDTH",
+                        "text_lines": 1.0,
+                        "internal_toggles": {
+                          "text_size": 10,
+                          "text_width": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$",
+                          "text_width": "$si(rwidth)-96/si(skpi)$"
+                        }
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$if(ci(allday, si(mindex, 3))=0, df(hh:mm, ci(start, si(mindex, 3)))-df(hh:mm, ci(end, si(mindex, 3))))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "internal_toggles": {
+                          "text_size": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$"
+                        }
+                      }
+                    ]
                   }
                 ]
               }
@@ -379,20 +404,45 @@
                     }
                   },
                   {
-                    "internal_type": "TextModule",
-                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
-                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "internal_type": "StackLayerModule",
+                    "internal_title": "Text",
                     "position_anchor": "CENTERLEFT",
                     "internal_toggles": {
-                      "text_size": 10,
                       "position_padding_left": 10,
                       "position_padding_top": 10
                     },
                     "internal_formulas": {
-                      "text_size": "$32/si(skpi)$",
                       "position_padding_left": "$12/si(skpi)$",
                       "position_padding_top": "$6/si(skpi)$"
-                    }
+                    },
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$ci(title, si(mindex, 3))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "text_size_type": "FIXED_WIDTH",
+                        "text_lines": 1.0,
+                        "internal_toggles": {
+                          "text_size": 10,
+                          "text_width": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$",
+                          "text_width": "$si(rwidth)-96/si(skpi)$"
+                        }
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$if(ci(allday, si(mindex, 3))=0, df(hh:mm, ci(start, si(mindex, 3)))-df(hh:mm, ci(end, si(mindex, 3))))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "internal_toggles": {
+                          "text_size": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$"
+                        }
+                      }
+                    ]
                   }
                 ]
               }
@@ -500,20 +550,45 @@
                     }
                   },
                   {
-                    "internal_type": "TextModule",
-                    "text_expression": "$ci(title, si(mindex, 2))$\n$if(ci(allday, si(mindex, 2))=0, df(hh:mm, ci(start, si(mindex, 2)))-df(hh:mm, ci(end, si(mindex, 2))))$",
-                    "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                    "internal_type": "StackLayerModule",
+                    "internal_title": "Text",
                     "position_anchor": "CENTERLEFT",
                     "internal_toggles": {
-                      "text_size": 10,
                       "position_padding_left": 10,
                       "position_padding_top": 10
                     },
                     "internal_formulas": {
-                      "text_size": "$32/si(skpi)$",
                       "position_padding_left": "$12/si(skpi)$",
                       "position_padding_top": "$6/si(skpi)$"
-                    }
+                    },
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$ci(title, si(mindex, 3))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "text_size_type": "FIXED_WIDTH",
+                        "text_lines": 1.0,
+                        "internal_toggles": {
+                          "text_size": 10,
+                          "text_width": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$",
+                          "text_width": "$si(rwidth)-96/si(skpi)$"
+                        }
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$if(ci(allday, si(mindex, 3))=0, df(hh:mm, ci(start, si(mindex, 3)))-df(hh:mm, ci(end, si(mindex, 3))))$",
+                        "text_family": "kfile://org.kustom.provider/fonts/NDot57Caps.otf",
+                        "internal_toggles": {
+                          "text_size": 10
+                        },
+                        "internal_formulas": {
+                          "text_size": "$32/si(skpi)$"
+                        }
+                      }
+                    ]
                   }
                 ]
               }
